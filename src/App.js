@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Route } from 'react-router-dom'
+import styled from 'styled-components'
+
+import PrivateRoute from './components/PrivateRoute'
+
+import NavBar from './components/NavBar'
+import Login from './components/Login'
+import SignUp from './components/SignUp'
+import ReceiptList from './components/FriendList'
+import Footer from './components/Footer'
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <AppDiv className="App">
+      <p>App test</p>
+      <NavBar />
+      <Route path='/login' component={Login} />
+      <Route path='SignUp' component={SignUp} />
+      <PrivateRoute path='/receiptlist' component={ReceiptList} />
+      <Footer />
+    </AppDiv>
+  )
 }
 
-export default App;
+export default App
+
+const AppDiv = styled.div`
+  background: lightgray
+`
