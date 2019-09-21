@@ -1,10 +1,13 @@
 import {
-    FETCHING_RECEIPTS_START,
-    FETCHING_RECEIPTS_SUCCESS,
-    FETCHING_RECEIPTS_FAILURE,
+    POSTING_USER_START,
+    POSTING_USER_SUCCESS,
+    POSTING_USER_FAILURE,
     FETCHING_USER_START,
     FETCHING_USER_SUCCESS,
-    FETCHING_USER_FAILURE
+    FETCHING_USER_FAILURE,
+    FETCHING_RECEIPTS_START,
+    FETCHING_RECEIPTS_SUCCESS,
+    FETCHING_RECEIPTS_FAILURE
 } from './actions'
 
 const initialState = {
@@ -13,6 +16,8 @@ const initialState = {
     isFetching: false,
     error: ''
 }
+
+// todo add posting user cases 
 
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
