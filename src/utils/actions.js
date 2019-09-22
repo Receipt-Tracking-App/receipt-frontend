@@ -2,20 +2,20 @@ import axios from 'axios'
 import { axiosWithAuth } from './axiosWithAuth'
 
 // sign up actions
-export const POSTING_USER_START = 'POSTING_USER_START'
-export const POSTING_USER_SUCCESS = 'POSTING_USER_SUCCESS'
-export const POSTING_USER_FAILURE = 'POSTING_USER_FAILURE'
+export const SIGNUP_USER_START = 'SIGNUP_USER_START'
+export const SIGNUP_USER_SUCCESS = 'SIGNUP_USER_SUCCESS'
+export const SIGNUP_USER_FAILURE = 'SIGNUP_USER_FAILURE'
 export const postUser = (credentials) => dispatch => {
-    dispatch({ type: POSTING_USER_START})
-    axiosWithAuth()
+    dispatch({ type: SIGNUP_USER_START})
+    axios
         .post('PLACEHOLDER!!!!', credentials) // fill in URL
         .then(res => {
             console.log(res)
-            dispatch({ type: POSTING_USER_SUCCESS, payload: res.data})
+            dispatch({ type: SIGNUP_USER_SUCCESS, payload: res.data})
         })
         .catch(err => {
             console.log(`unable to load games data: ${err}`)
-            dispatch({ type: POSTING_USER_FAILURE, payload: err})
+            dispatch({ type: SIGNUP_USER_FAILURE, payload: err})
         })
 }
 
@@ -26,7 +26,7 @@ export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS'
 export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE'
 export const userLogin = credentials => dispatch => {
     dispatch({ type: LOGIN_USER_START})
-    axiosWithAuth()
+    axios
         .post('PLACEHOLDER!!!!', credentials) // fill in URL
         .then(res => {
             console.log(res)
