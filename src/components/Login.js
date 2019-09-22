@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
 import styled from 'styled-components'
 
 import { userLogin } from '../utils/actions'
@@ -8,7 +9,7 @@ const initialCredentials = {
     password: ''
 }
 
-function Login() {
+function Login({ userLogin }) {
     const [credentials, setCredentials] = useState(initialCredentials)
 
     function handleChange(e) {
@@ -50,7 +51,14 @@ function Login() {
     )
 }
 
-export default Login
+const mapStateToProps = state => {
+    return {
+      isFetching: state.isFetching,
+      error: state.error
+    }
+  }
+  
+  export default connect(mapStateToProps, { userLogin })(Login)
 
 //styled components
 
