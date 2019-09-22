@@ -7,7 +7,7 @@ import PrivateRoute from './components/PrivateRoute'
 import NavBar from './components/NavBar'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
-import ReceiptList from './components/FriendList'
+import ReceiptList from './components/ReceiptList'
 import Footer from './components/Footer'
 
 
@@ -15,7 +15,6 @@ import Footer from './components/Footer'
 function App() {
   return (
     <AppDiv className="App">
-      <p>App test</p>
       <NavBar />
       <Route path='/login' component={Login} />
       <Route path='SignUp' component={SignUp} />

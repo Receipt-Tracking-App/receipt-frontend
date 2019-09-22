@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import { getUser } from '../utils/actions'
+import { userLogin } from '../utils/actions'
 
 const initialCredentials = {
     username: '',
@@ -22,7 +22,7 @@ function Login() {
 
     function callLogin(e) {
         e.preventDefault()
-        getUser()
+        userLogin()
     }
 
     return (

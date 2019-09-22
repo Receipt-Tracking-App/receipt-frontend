@@ -21,20 +21,20 @@ export const postUser = (credentials) => dispatch => {
 
 
 // login actions
-export const FETCHING_USER_START = 'FETCHING_USER_START'
-export const FETCHING_USER_SUCCESS = 'FETCHING_USER_SUCCESS'
-export const FETCHING_USER_FAILURE = 'FETCHING_USER_FAILURE'
-export const getUser = () => dispatch => {
-    dispatch({ type: FETCHING_USER_START})
+export const LOGIN_USER_START = 'LOGIN_USER_START'
+export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS'
+export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE'
+export const userLogin = credentials => dispatch => {
+    dispatch({ type: LOGIN_USER_START})
     axiosWithAuth()
-        .get('PLACEHOLDER!!!!') // fill in URL
+        .post('PLACEHOLDER!!!!', credentials) // fill in URL
         .then(res => {
             console.log(res)
-            dispatch({ type: FETCHING_USER_SUCCESS, payload: res.data})
+            dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data})
         })
         .catch(err => {
             console.log(`unable to load games data: ${err}`)
-            dispatch({ type: FETCHING_USER_FAILURE, payload: err})
+            dispatch({ type: LOGIN_USER_FAILURE, payload: err})
         })
 }
 

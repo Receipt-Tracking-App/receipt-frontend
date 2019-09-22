@@ -10,6 +10,7 @@ const initialCredentials = {
 }
 
 function SignUp() {
+    
     const [credentials, setCredentials] = useState(initialCredentials)
 
     function handleChange(e) {
