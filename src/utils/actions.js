@@ -55,3 +55,21 @@ export const getReceipts = () => dispatch => {
             dispatch({ type: FETCHING_RECEIPTS_FAILURE, payload: err})
         })
 }
+
+// post receipts actions
+export const POSTING_RECEIPT_START = 'POSTING_RECEIPT_START'
+export const POSTING_RECEIPT_SUCCESS = 'POSTING_RECEIPT_SUCCESS'
+export const POSTING_RECEIPT_FAILURE = 'POSTING_RECEIPT_FAILURE'
+export const postReceipt = () => dispatch => {
+    dispatch({ type: POSTING_RECEIPT_START})
+    axiosWithAuth()
+        .post('PLACEHOLDER!!!!') // fill in URL
+        .then(res => {
+            console.log(res)
+            dispatch({ type: POSTING_RECEIPT_SUCCESS, payload: res.data})
+        })
+        .catch(err => {
+            console.log(`unable to load games data: ${err}`)
+            dispatch({ type: POSTING_RECEIPT_FAILURE, payload: err})
+        })
+}
