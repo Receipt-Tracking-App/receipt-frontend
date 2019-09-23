@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="439.66" height="108" viewBox="0 0 439.66 108">
+  <g id="Group_1" data-name="Group 1" transform="translate(45.66 -74.92)">
+    <text id="Receiptly" transform="translate(43 155.92)" fill="#fafafa" font-size="77" font-family="Poppins-Bold, Poppins" font-weight="700" letter-spacing="-0.03em"><tspan x="0" y="0">Receiptly</tspan></text>
+    <path id="Path_1" data-name="Path 1" d="M65.042,0C77.015,0,86.723,9.314,86.723,20.8V83.209H81.3l-5.42-5.2-5.42,5.2h-5.42l-5.42-5.2-5.42,5.2h-5.42l-5.42-5.2-5.42,5.2h-5.42l-5.42-5.2-5.42,5.2V20.8C21.681,9.314,11.973,0,0,0ZM27.1,20.8V70.655l7.664,7.354H35.7l7.664-7.359,7.664,7.359h.932l7.664-7.354,7.664,7.354h.932l7.664-7.354,5.42,5.2V20.8c0-8.6-7.294-15.6-16.26-15.6H21.67A25.189,25.189,0,0,1,27.1,20.8Zm48.781,31.2h-27.1v5.2h27.1Zm0-10.4h-27.1v5.2h27.1Zm0-10.4h-27.1v5.2h27.1Zm-43.361,26h5.42v-5.2h-5.42Zm0-10.4h5.42V41.6h-5.42Zm0-10.4h5.42V31.2h-5.42Z" transform="translate(-44.208 91.961) rotate(1)" fill="#fafafa"/>
+    <rect id="Rectangle_5" data-name="Rectangle 5" width="96" height="13" transform="translate(271 164.92)" fill="#fafafa"/>
+    <rect id="Rectangle_6" data-name="Rectangle 6" width="194" height="13" transform="translate(47 164.92)" fill="#fafafa"/>
+  </g>
+</svg>
