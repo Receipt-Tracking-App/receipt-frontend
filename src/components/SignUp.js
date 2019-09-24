@@ -7,10 +7,13 @@ import { postUser } from '../utils/actions'
 const initialCredentials = {
     username: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    firstName: '',
+    lastName: '',
+    email: ''
 }
 
-function SignUp({ postUser }) {
+function SignUp({ postUser, history }) {
 
     const [credentials, setCredentials] = useState(initialCredentials)
 
@@ -25,7 +28,7 @@ function SignUp({ postUser }) {
 
     function callSignUp(e) {
         e.preventDefault()
-        postUser(credentials)
+        postUser(credentials, history)
     }
 
     return (
@@ -33,6 +36,27 @@ function SignUp({ postUser }) {
             <br/>
             <br/>
             <form onSubmit={callSignUp}>
+                <input
+                    type="text"
+                    name="firstName"
+                    value={credentials.firstName}
+                    placeholder="first name"
+                    onChange={handleChange}
+                />
+                <input
+                    type="text"
+                    name="lastName"
+                    value={credentials.lastName}
+                    placeholder="last name"
+                    onChange={handleChange}
+                />
+                <input
+                    type="email"
+                    name="email"
+                    value={credentials.email}
+                    placeholder="email"
+                    onChange={handleChange}
+                />
                 <input
                     type="text"
                     name="username"
@@ -49,12 +73,12 @@ function SignUp({ postUser }) {
                 />
                 <input
                     type="password"
-                    name="confirmpassword"
+                    name="confirmPassword"
                     value={credentials.confirmPassword}
                     placeholder='confirm password'
                     onChange={handleChange}
                 />
-                <button>Log in</button>
+                <button>Sign Up</button>
             </form>
         </SignUpDiv>
     )
