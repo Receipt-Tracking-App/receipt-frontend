@@ -11,7 +11,7 @@ export const postUser = (credentials, history) => dispatch => {
         .post('https://lambda-receipt-tracker.herokuapp.com/api/auth/register', credentials)
         .then(res => {
             console.log(res)
-            dispatch({ type: SIGNUP_USER_SUCCESS})
+            dispatch({ type: SIGNUP_USER_SUCCESS, payload: res.data.userId})
             history.push('/receiptlist')
         })
         .catch(err => {
@@ -31,7 +31,7 @@ export const userLogin = (credentials, history) => dispatch => {
         .post('https://lambda-receipt-tracker.herokuapp.com/api/auth/login', credentials)
         .then(res => {
             console.log(res)
-            dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data.token})
+            dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data.userId})
             history.push('/receiptlist')
         })
         .catch(err => {
@@ -58,7 +58,7 @@ export const getReceipts = (userId) => dispatch => {
         })
 }
 
-// post receipts actions
+// post receipt actions
 export const POSTING_RECEIPT_START = 'POSTING_RECEIPT_START'
 export const POSTING_RECEIPT_SUCCESS = 'POSTING_RECEIPT_SUCCESS'
 export const POSTING_RECEIPT_FAILURE = 'POSTING_RECEIPT_FAILURE'
@@ -68,7 +68,7 @@ export const postReceipt = (newReceipt) => dispatch => {
         .post('https://lambda-receipt-tracker.herokuapp.com/api/receipts', newReceipt)
         .then(res => {
             console.log(res)
-            dispatch({ type: POSTING_RECEIPT_SUCCESS, payload: res.data})
+            dispatch({ type: POSTING_RECEIPT_SUCCESS, payload: newReceipt})
         })
         .catch(err => {
             console.log(`unable to post receipts data: ${err}`)
@@ -76,3 +76,20 @@ export const postReceipt = (newReceipt) => dispatch => {
         })
 }
 
+// delete receipt actions
+export const DELETING_RECEIPT_START = 'DELETING_RECEIPT_START'
+export const DELETING_RECEIPT_SUCCESS = 'DELETING_RECEIPT_SUCCESS'
+export const DELETING_RECEIPT_FAILURE = 'DELETING_RECEIPT_FAILURE'
+export const deleteReceipt = (receiptId) => dispatch => {
+    dispatch({ type: DELETING_RECEIPT_START})
+    axiosWithAuth()
+        .post(`https://lambda-receipt-tracker.herokuapp.com/api/receipts/${receiptId}`)
+        .then(res => {
+            console.log(res)
+            dispatch({ type: DELETING_RECEIPT_SUCCESS, payload: receiptId})
+        })
+        .catch(err => {
+            console.log(`unable to post receipts data: ${err}`)
+            dispatch({ type: DELETING_RECEIPT_FAILURE, payload: err})
+        })
+}

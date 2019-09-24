@@ -1,6 +1,6 @@
 import React from 'react'
-import styled from 'styled-components';
-import { NavLink } from 'reactstrap';
+// import styled from 'styled-components';
+// import { NavLink } from 'reactstrap';
 
 // const Nav = styled.div`
 //     display: flex;
@@ -43,9 +43,6 @@ export default class NavBar extends React.Component {
               </NavItem>
               <NavItem>
                 <NavLink href="/receiptlist">List of Receipts</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/addreceipt">Add a Receipt</NavLink>
               </NavItem>
               </Nav>
             </Collapse>

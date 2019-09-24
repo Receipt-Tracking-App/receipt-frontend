@@ -8,17 +8,17 @@ import NavBar from './components/NavBar'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import ReceiptList from './components/ReceiptList'
-// import AddReceipt from './components/AddReceipt';
 import Footer from './components/Footer'
 
 function App() {
+
   return (
     <AppDiv className="App">
       <NavBar />
       <Route path='/login' component={Login} />
       <Route path='/signup' component={SignUp} />
-      <PrivateRoute path='/receiptlist' component={ReceiptList} />
-      {/* <Route path='/addreceipt' component={AddReceipt} />  */} */}
+      {/* <PrivateRoute path='/receiptlist' component={ReceiptList} /> */}
+      <Route path='/receiptlist' component={ReceiptList} />
       <Footer />
     </AppDiv>
   )
