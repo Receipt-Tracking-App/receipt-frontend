@@ -31,44 +31,42 @@ const DetailsBox= styled.div`
 
 function AddReceipt({ postReceipt }) {
   // console.log(postReceipt)
-    const [receipts, setReceipts] = useState([])
+  const [receipts, setReceipts] = useState([])
+  // const handleChanges = e => {
+  //   setReceipts({ ...receipts, [e.target.name]: e.target.value })
+  // }
+  // const submitForm = e => {
+  //   e.preventDefault();
+  //   postReceipt.addNewReceipt(receipts)
+  // }
 
-    const handleChange = e => {
-      console.log(receipts)
-      setReceipts({...receipts, [e.target.name]: e.target.value})
-    }
-    const handleSubmit = e => {
-      e.preventDefault();      
-    }
+  return (
+    <ReceiptContainer>
+      <Formik>
+        <Form>
+          <img src='../assets/images/upload.svg' alt='upload icon' />
 
-    return (
-      <ReceiptContainer>
-        <Formik>
-          <Form>
-            <div className='photo-container'>Receipt Photo</div>
-
-            <button>Scan Photo</button>
-            <h3>Enter Details</h3>
-            <DetailsBox>
-              <Field type='text' name='retailer' placeholder='Retailer' />
-              <Field component='select' className='receipt-category' name='category'>
-                <option>Category</option>
-                <option value='work'>Work</option>
-                <option value='food'>Dining</option>
-                <option value='shopping'>Shopping</option>
-                <option value='travel'>Travel</option>
-              </Field>
-              <Field type='date' name='date' placeholder='Date' />
-              <Field type='text' name='retailer' placeholder='Retailer' />
-              <Field type='text' name='amount' placeholder='Amount' />
-            </DetailsBox>
-            
-            <button type='submit'>Add Receipt</button>
-          </Form>
-        </Formik>
-        
-      </ReceiptContainer>
-    )
+          <button>Scan Photo</button>
+          <h3>Enter Details</h3>
+          <DetailsBox>
+            <Field type='text' name='retailer' placeholder='Retailer' />
+            <Field component='select' className='receipt-category' name='category'>
+              <option>Category</option>
+              <option value='work'>Work</option>
+              <option value='food'>Dining</option>
+              <option value='shopping'>Shopping</option>
+              <option value='travel'>Travel</option>
+            </Field>
+            <Field type='date' name='date' placeholder='Date' />
+            <Field type='text' name='amount' placeholder='Amount' />
+          </DetailsBox>
+          
+          <button type='submit'>Add Receipt</button>
+        </Form>
+      </Formik>
+      
+    </ReceiptContainer>
+  )
 }
 
 const mapStateToProps = state => {
