@@ -7,8 +7,13 @@ import { getReceipts } from '../utils/actions'
 function ReceiptList({ getReceipts }) {
     return (
         <div>
+            <ul>
+                <li>
+                    
+                </li>
+            </ul>
             <p>receipt list test</p>
-            <AddReceipt />
+            {/* <AddReceipt /> */}
         </div>
     )
 }

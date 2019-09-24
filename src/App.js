@@ -9,6 +9,7 @@ import Login from './components/Login'
 import SignUp from './components/SignUp'
 import ReceiptList from './components/ReceiptList'
 import Footer from './components/Footer'
+import './styles.css';
 
 import AddReceipt from './components/AddReceipt';
 
@@ -17,10 +18,11 @@ function App() {
   return (
     <AppDiv className="App">
       <NavBar />
-      <AddReceipt />
       <Route path='/login' component={Login} />
       <Route path='SignUp' component={SignUp} />
-      <PrivateRoute path='/receiptlist' component={ReceiptList} />
+      <Route path='/AddReceipt' component={AddReceipt} />
+      {/* <PrivateRoute path='/receiptlist' component={ReceiptList} /> */}
+      <Route path='/receiptlist' component={ReceiptList} />
       <Footer />
     </AppDiv>
   )
@@ -29,5 +31,5 @@ function App() {
 export default App
 
 const AppDiv = styled.div`
-  background: #f0f0f1;
+  background: #BAA6CE;
 `
