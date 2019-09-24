@@ -1,24 +1,35 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Field, Formik } from 'formik';
 import styled from 'styled-components';
 import { postReceipt } from '../utils/actions'
 
 function AddReceipt({ postReceipt }) {
-  
+
   const [receipts, setReceipts] = useState([])
   useEffect(() => {
+    return (
+      setReceipts(postReceipt())
+    )
+    }, [])
 
-  })
+  const handleChange = e => {
+    setReceipts(e.target.value)
+  }
+  // console.log(setReceipts)
+
+  const handleSubmit = event => {
+    event.preventDefault();
+  }
 
   return (
     <ReceiptContainer>
       <Formik>
-        <Form>
+        <Form onSubmit={handleChange}>
           <Title>Add Receipt</Title>
           <ImgBox>
             <Cloud src={ require('../assets/images/upload.png') } alt='upload icon' />
-            <StyledBtn>Scan Photo</StyledBtn>
+            <StyledBtn type='submit'>Scan Photo</StyledBtn>
           </ImgBox>
           
           <h3>Enter Details</h3>
@@ -36,6 +47,8 @@ function AddReceipt({ postReceipt }) {
           </DetailsBox>
           
           <StyledBtn type='submit'>Add Receipt</StyledBtn>
+
+          
         </Form>
       </Formik>
       

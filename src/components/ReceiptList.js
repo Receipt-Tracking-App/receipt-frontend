@@ -1,21 +1,41 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import AddReceipt from './AddReceipt'
 import { getReceipts } from '../utils/actions'
+// import Receipt from './ReceiptCard';
 
-function ReceiptList({ getReceipts }) {
-    return (
-        <div>
+// function ReceiptList({ getReceipts }) {
+   
+//     return (
+//         <div>
+//             {/* {getReceipts.receipts.map((receipt, index) => (
+//                 <Receipt key={index} />
+//             ))} */}
+//             <AddReceipt />
+//         </div>
+//     )
+// }
+
+class ReceiptList extends Component {
+    getReceipts() {
+        // return this.props.receipts.map( receipt => {
+        //         <ReceiptCard 
+        //             date={receipt.date}
+        //             retailer={receipt.retailer}
+        //             amount={receipt.amount}
+        //             category={receipt.category}
+        //         />
+        // })
+    }
+    render() {
+        return (
             <ul>
-                <li>
-                    
-                </li>
+                {this.getReceipts()}
             </ul>
-            <p>receipt list test</p>
-            {/* <AddReceipt /> */}
-        </div>
-    )
+
+        )
+    }
 }
 
 const mapStateToProps = state => {

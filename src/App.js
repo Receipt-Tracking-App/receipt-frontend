@@ -11,20 +11,16 @@ import ReceiptList from './components/ReceiptList'
 import Footer from './components/Footer'
 import './styles.css';
 
+import AddReceipt from './components/AddReceipt';
+
 function App() {
   return (
     <AppDiv className="App">
+      <AddReceipt />
       <NavBar />
       <Route path='/login' component={Login} />
-<<<<<<< HEAD
-      <Route path='SignUp' component={SignUp} />
-      <Route path='/AddReceipt' component={AddReceipt} />
-      {/* <PrivateRoute path='/receiptlist' component={ReceiptList} /> */}
-      <Route path='/receiptlist' component={ReceiptList} />
-=======
       <Route path='/signup' component={SignUp} />
-      <PrivateRoute path='/receiptlist' component={ReceiptList} />
->>>>>>> master
+      <Route path='/receiptlist' component={ReceiptList} />
       <Footer />
     </AppDiv>
   )
