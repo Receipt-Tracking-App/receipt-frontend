@@ -10,16 +10,12 @@ import SignUp from './components/SignUp'
 import ReceiptList from './components/ReceiptList'
 import Footer from './components/Footer'
 
-import AddReceipt from './components/AddReceipt';
-
-
 function App() {
   return (
     <AppDiv className="App">
       <NavBar />
-      <AddReceipt />
       <Route path='/login' component={Login} />
-      <Route path='/signUp' component={SignUp} />
+      <Route path='/signup' component={SignUp} />
       <PrivateRoute path='/receiptlist' component={ReceiptList} />
       <Footer />
     </AppDiv>
