@@ -1,14 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import AddReceipt from './AddReceipt'
+// import AddReceipt from './AddReceipt'
 import { getReceipts } from '../utils/actions'
 
 function ReceiptList({ getReceipts }) {
     return (
         <div>
             <p>receipt list test</p>
-            <AddReceipt />
+            {/* <AddReceipt /> */}
         </div>
     )
 }
@@ -22,3 +22,7 @@ const mapStateToProps = state => {
   }
   
   export default connect(mapStateToProps, { getReceipts })(ReceiptList)
+
+
+
+  

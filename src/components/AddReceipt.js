@@ -1,11 +1,77 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { postReceipt } from '../utils/actions'
+import { isFlowBaseAnnotation } from '@babel/types';
+
 
 function AddReceipt({ postReceipt }) {
-    return (
-        <div>add receipt test</div>
+  const [receipt, setReceipt] = useState([
+    {
+    retailer: "",
+    category: "",
+    date: "",
+    amount: ""
+    }
+  ]);
+
+  const handleChange = event => {
+    setReceipt({ ...receipt, [event.target.name]: event.target.value
+    });
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    setReceipt({ retailer: '', category: '', date: '', amount: '' })
+  };
+
+  function addReceipt(event) {
+    event.preventDefault();
+    setReceipt({setReceipt});
+    completed: false;
+  }
+   
+  function updateNewReceipt(event) {
+    setReceipt({
+      receipt: event.target.value
+    });
+  }
+  
+  
+  return (
+        <div>
+            <form onSubmit={event => handleSubmit(event)}>
+            <input
+              type="text"
+              name="retailer"
+              value={receipt.retailer}
+              placeholder="Retailer"
+              onChange={event => handleChange(event)}
+              />
+            <input
+              type="text"
+              name="category"
+              value={receipt.category}
+              placeholder="Category"
+              onChange={event => handleChange(event)}
+              />
+              <input
+              type="number"
+              name="date"
+              value={receipt.date}
+              placeholder="Date"
+              onChange={event => handleChange(event)}
+              />
+              <input
+              type="number"
+              name="amount"
+              value={receipt.amount}
+              placeholder="Amount"
+              onChange={event => handleChange(event)}
+              />
+              <button>Add Receipt</button>
+           </form>
+        </div>
     )
 }
 
@@ -17,4 +83,6 @@ const mapStateToProps = state => {
     }
   }
   
-  export default connect(mapStateToProps, { postReceipt })(AddReceipt)
+export default connect(mapStateToProps, { postReceipt })(AddReceipt)
+
+

@@ -73,3 +73,4 @@ export const postReceipt = () => dispatch => {
             dispatch({ type: POSTING_RECEIPT_FAILURE, payload: err})
         })
 }
+
