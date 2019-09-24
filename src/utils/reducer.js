@@ -7,11 +7,17 @@ import {
     LOGIN_USER_FAILURE,
     FETCHING_RECEIPTS_START,
     FETCHING_RECEIPTS_SUCCESS,
-    FETCHING_RECEIPTS_FAILURE
+    FETCHING_RECEIPTS_FAILURE,
+    POSTING_RECEIPT_START,
+    POSTING_RECEIPT_SUCCESS,
+    POSTING_RECEIPT_FAILURE,
+    DELETING_RECEIPT_START,
+    DELETING_RECEIPT_SUCCESS,
+    DELETING_RECEIPT_FAILURE
 } from './actions'
 
 const initialState = {
-    user: null,
+    userId: null,
     receipts: [],
     isFetching: false,
     error: ''
@@ -30,6 +36,7 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isFetching: false,
+                userId: action.payload
             }
         case SIGNUP_USER_FAILURE:
             return {
@@ -47,6 +54,7 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isFetching: true,
+                userId: action.payload
             }
         case LOGIN_USER_FAILURE:
             return {
@@ -71,6 +79,44 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 isFetching: false,
                 error: `Error: Unable to load receipts list: ${action.payload}`
+            }
+        case POSTING_RECEIPT_START:
+            return {
+                ...state,
+                isFetching: true,
+                error: ''
+            }
+        case POSTING_RECEIPT_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                receipts: [...state.receipts, action.payload],
+            }
+        case POSTING_RECEIPT_FAILURE:
+            return {
+                ...state,
+                isFetching: false,
+                error: `Error: Unable to add receipt: ${action.payload}`
+            }
+        case DELETING_RECEIPT_START:
+            return {
+                ...state,
+                isFetching: true,
+                error: ''
+            }
+        case DELETING_RECEIPT_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                receipts: state.receipts.filter(receipt => {
+                    return receipt.id !== action.payload
+                })
+            }
+        case DELETING_RECEIPT_FAILURE:
+            return {
+                ...state,
+                isFetching: false,
+                error: `Error: Unable to delete receipt: ${action.payload}`
             }
         default:
             return state
