@@ -17,7 +17,7 @@ function App() {
     <AppDiv className="App">
       <NavBar />
       <Route path='/login' component={Login} />
-      <Route path='SignUp' component={SignUp} />
+      <Route path='/signUp' component={SignUp} />
       <PrivateRoute path='/receiptlist' component={ReceiptList} />
       <Footer />
     </AppDiv>

@@ -30,7 +30,6 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isFetching: false,
-                user: action.payload  // update once i have backend info
             }
         case SIGNUP_USER_FAILURE:
             return {
@@ -48,7 +47,6 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isFetching: true,
-                user: action.payload  // update once i have backend info
             }
         case LOGIN_USER_FAILURE:
             return {
