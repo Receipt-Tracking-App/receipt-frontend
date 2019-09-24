@@ -5,11 +5,11 @@ import styled from 'styled-components'
 import { userLogin } from '../utils/actions'
 
 const initialCredentials = {
-    username: '',
+    userId: '',
     password: ''
 }
 
-function Login({ userLogin }) {
+function Login({ userLogin, history }) {
     const [credentials, setCredentials] = useState(initialCredentials)
 
     function handleChange(e) {
@@ -23,7 +23,7 @@ function Login({ userLogin }) {
 
     function callLogin(e) {
         e.preventDefault()
-        userLogin()
+        userLogin(credentials, history)
     }
 
     return (
@@ -33,9 +33,9 @@ function Login({ userLogin }) {
             <form onSubmit={callLogin}>
                 <input
                     type="text"
-                    name="username"
-                    value={credentials.username}
-                    placeholder="login name"
+                    name="userId"
+                    value={credentials.userId}
+                    placeholder="username or email"
                     onChange={handleChange}
                 />
                 <input
