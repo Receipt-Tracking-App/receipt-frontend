@@ -1,14 +1,27 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-// import AddReceipt from './AddReceipt'
+import AddReceipt from './AddReceipt'
 import { getReceipts } from '../utils/actions'
 
-function ReceiptList({ getReceipts }) {
+function ReceiptList(props) {
+
+    const [receipts, setReceipts ] = useState([]);
+
     return (
         <div>
-            <p>receipt list test</p>
-            {/* <AddReceipt /> */}
+            {receipts.map(receipt => {
+                return (
+                    <AddReceipt 
+                        key={receipt.id}
+                        retailer={receipt.retailer}
+                        category={receipt.category}
+                        date={receipt.date}
+                        amount={receipt.amount}
+                    /> 
+                )
+            })} 
+            
         </div>
     )
 }
