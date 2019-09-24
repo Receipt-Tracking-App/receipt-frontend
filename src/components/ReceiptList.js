@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 
 import AddReceipt from './AddReceipt'
 import { getReceipts } from '../utils/actions'
-
-function ReceiptList(props) {
+0
+function ReceiptList({ getReceipts }) {
 
     const [receipts, setReceipts ] = useState([]);
 
