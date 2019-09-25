@@ -1,33 +1,12 @@
-<<<<<<< HEAD
-import React, { Component } from 'react'
-=======
-import React, {useState, useEffect} from 'react'
+import React, { Component, useState, useEffect } from 'react'
 import axios from 'axios'
 import { axiosWithAuth } from '../utils/axiosWithAuth.js'
->>>>>>> 03de89f53fe7d3f62d87a1a88c66be9d4dfa92aa
 import { connect } from 'react-redux'
 
 // import AddReceipt from './AddReceipt'
 import ReceiptCard from './ReceiptCard'
 import { getReceipts } from '../utils/actions'
 
-<<<<<<< HEAD
-// }
-
-class ReceiptList extends Component {
-    getReceipts() {
-        // })
-    }
-    render() {
-        return (
-            <ul>
-                {this.getReceipts()}
-            </ul>
-
-        )
-    }
-}
-=======
 
 
 //     function ReceiptList(props) {
@@ -85,7 +64,7 @@ function ReceiptList({userId}) {
     useEffect(() => {
         getReceipts(userId)
   
-    }, [query]);
+    }, [query, userId]);
     const handleInputChange = event => {
       setQuery(event.target.value);
     };
@@ -122,7 +101,6 @@ function ReceiptList({userId}) {
       </div>
     );
   }
->>>>>>> 03de89f53fe7d3f62d87a1a88c66be9d4dfa92aa
 
   const mapStateToProps = state => {
     return {
