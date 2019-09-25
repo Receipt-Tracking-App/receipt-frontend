@@ -1,9 +1,16 @@
+<<<<<<< HEAD
+import React, { useEffect, useState } from 'react'
+=======
 import React from 'react'
+>>>>>>> 03de89f53fe7d3f62d87a1a88c66be9d4dfa92aa
 import { connect } from 'react-redux'
 import { Field, Formik } from 'formik';
 import styled from 'styled-components';
 import { postReceipt } from '../utils/actions'
 
+<<<<<<< HEAD
+function AddReceipt({ status, newReceipt }) {
+=======
 
 const ReceiptContainer = styled.div`
   width: 66vw;
@@ -25,11 +32,27 @@ const DetailsBox= styled.div`
   flex-direction: column;
   margin: 10px 0;
   padding: 20px;
+>>>>>>> 03de89f53fe7d3f62d87a1a88c66be9d4dfa92aa
 
-`;
+  const [receipts, setReceipts] = useState([])
+  useEffect(() => {
+    if(status) {
+      setReceipts([...receipts, status])
+    }
+    }, [status])
 
+  const handleChange = e => {
+    setReceipts(e.target.value)
+    console.log(setReceipts)
 
+  }
 
+<<<<<<< HEAD
+  const handleSubmit = event => {
+    event.preventDefault();
+    postReceipt(newReceipt)
+  }
+=======
 function AddReceipt({ postReceipt }) {
   // console.log(postReceipt)
   // const [receipts, setReceipts] = useState([])
@@ -40,14 +63,18 @@ function AddReceipt({ postReceipt }) {
   //   e.preventDefault();
   //   postReceipt.addNewReceipt(receipts)
   // }
+>>>>>>> 03de89f53fe7d3f62d87a1a88c66be9d4dfa92aa
 
   return (
     <ReceiptContainer>
       <Formik>
-        <Form>
-          <img src='../assets/images/upload.svg' alt='upload icon' />
-
-          <button>Scan Photo</button>
+        <Form onSubmit={handleChange}>
+          <Title>Add Receipt</Title>
+          <ImgBox>
+            <Cloud src={ require('../assets/images/upload.png') } alt='upload icon' />
+            <StyledBtn type='submit'>Scan Photo</StyledBtn>
+          </ImgBox>
+          
           <h3>Enter Details</h3>
           <DetailsBox>
             <Field type='text' name='retailer' placeholder='Retailer' />
@@ -62,10 +89,10 @@ function AddReceipt({ postReceipt }) {
             <Field type='text' name='amount' placeholder='Amount' />
           </DetailsBox>
           
-          <button type='submit'>Add Receipt</button>
+          <StyledBtn type='submit'>Add Receipt</StyledBtn>          
         </Form>
+
       </Formik>
-      
     </ReceiptContainer>
   )
 }
@@ -81,3 +108,58 @@ const mapStateToProps = state => {
   
   export default connect(mapStateToProps, { postReceipt })(AddReceipt)
 
+
+  const ReceiptContainer = styled.div`
+  width: 60vw;
+  border: 1px solid grey;
+  background: #FAFAFA;
+  margin: 0 auto;
+  padding: 30px;
+  
+`;
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
+
+const DetailsBox= styled.div`
+  background: #fff;
+  border: 1px solid #fff;
+  border-radius: 15px;
+  box-shadow: 2px 4px 3px 3px #C0C0C0;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  padding: 20px;
+
+`;
+const StyledBtn = styled.button`
+  background: black; 
+  border-radius: 15px;
+  color: #FAFAFA;
+  padding: 5px;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 10px;
+`;
+const Title = styled.h1`
+  border-bottom: 2px solid #5F336C;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+`;
+const ImgBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+  margin: 10px auto;
+`;
+const Cloud = styled.img`
+  width: 60%;
+  height: 50%;
+  margin: 0 auto;
+  border: 1px solid #FAFAFA;
+  border-radius: 15px;
+  padding: 5px;
+  box-shadow: 2px 3px 2px 3px #C0C0C0;
+
+`;
