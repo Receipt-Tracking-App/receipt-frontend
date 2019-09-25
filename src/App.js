@@ -16,11 +16,11 @@ import AddReceipt from './components/AddReceipt';
 function App() {
   return (
     <AppDiv className="App">
-      <AddReceipt />
       <NavBar />
+      <AddReceipt />
       <Route path='/login' component={Login} />
       <Route path='/signup' component={SignUp} />
-      <Route path='/receiptlist' component={ReceiptList} />
+      <PrivateRoute path='/receiptlist' component={ReceiptList} />
       <Footer />
     </AppDiv>
   )

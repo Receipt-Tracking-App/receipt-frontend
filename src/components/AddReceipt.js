@@ -12,10 +12,10 @@ function AddReceipt({ status, newReceipt }) {
       setReceipts([...receipts, status])
     }
     }, [status])
-    console.log(setReceipts) 
 
   const handleChange = e => {
     setReceipts(e.target.value)
+    console.log(setReceipts)
 
   }
 
@@ -50,8 +50,8 @@ function AddReceipt({ status, newReceipt }) {
           
           <StyledBtn type='submit'>Add Receipt</StyledBtn>          
         </Form>
+
       </Formik>
-      
     </ReceiptContainer>
   )
 }
