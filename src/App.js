@@ -14,13 +14,15 @@ import './styles.css';
 import AddReceipt from './components/AddReceipt';
 
 function App() {
+
   return (
     <AppDiv className="App">
       <NavBar />
       <AddReceipt />
       <Route path='/login' component={Login} />
       <Route path='/signup' component={SignUp} />
-      <PrivateRoute path='/receiptlist' component={ReceiptList} />
+      {/* <PrivateRoute path='/receiptlist' component={ReceiptList} /> */}
+      <Route path='/receiptlist' component={ReceiptList} />
       <Footer />
     </AppDiv>
   )
