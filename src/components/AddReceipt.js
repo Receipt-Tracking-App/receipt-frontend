@@ -4,22 +4,24 @@ import { Field, Formik } from 'formik';
 import styled from 'styled-components';
 import { postReceipt } from '../utils/actions'
 
-function AddReceipt({ postReceipt }) {
+function AddReceipt({ status, newReceipt }) {
 
   const [receipts, setReceipts] = useState([])
   useEffect(() => {
-    return (
-      setReceipts(postReceipt())
-    )
-    }, [])
+    if(status) {
+      setReceipts([...receipts, status])
+    }
+    }, [status])
+    console.log(setReceipts) 
 
   const handleChange = e => {
     setReceipts(e.target.value)
+
   }
-  // console.log(setReceipts)
 
   const handleSubmit = event => {
     event.preventDefault();
+    postReceipt(newReceipt)
   }
 
   return (
@@ -46,9 +48,7 @@ function AddReceipt({ postReceipt }) {
             <Field type='text' name='amount' placeholder='Amount' />
           </DetailsBox>
           
-          <StyledBtn type='submit'>Add Receipt</StyledBtn>
-
-          
+          <StyledBtn type='submit'>Add Receipt</StyledBtn>          
         </Form>
       </Formik>
       
