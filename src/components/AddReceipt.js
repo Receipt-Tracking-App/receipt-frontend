@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { Field, Formik } from 'formik';
 import styled from 'styled-components';
 import { postReceipt } from '../utils/actions'
+
 
 const ReceiptContainer = styled.div`
   width: 66vw;
@@ -31,7 +32,7 @@ const DetailsBox= styled.div`
 
 function AddReceipt({ postReceipt }) {
   // console.log(postReceipt)
-  const [receipts, setReceipts] = useState([])
+  // const [receipts, setReceipts] = useState([])
   // const handleChanges = e => {
   //   setReceipts({ ...receipts, [e.target.name]: e.target.value })
   // }

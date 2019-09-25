@@ -11,12 +11,14 @@ import ReceiptList from './components/ReceiptList'
 import Footer from './components/Footer'
 
 function App() {
+
   return (
     <AppDiv className="App">
       <NavBar />
       <Route path='/login' component={Login} />
       <Route path='/signup' component={SignUp} />
-      <PrivateRoute path='/receiptlist' component={ReceiptList} />
+      {/* <PrivateRoute path='/receiptlist' component={ReceiptList} /> */}
+      <Route path='/receiptlist' component={ReceiptList} />
       <Footer />
     </AppDiv>
   )
