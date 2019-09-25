@@ -1,6 +1,14 @@
+<<<<<<< HEAD
+import React, { Component } from 'react'
+=======
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
+<<<<<<< HEAD
 // import { axiosWithAuth } from '../utils/axiosWithAuth.js'
+=======
+import { axiosWithAuth } from '../utils/axiosWithAuth.js'
+>>>>>>> 03de89f53fe7d3f62d87a1a88c66be9d4dfa92aa
+>>>>>>> a6804898ee04375943c68b058e72fa6460d7504d
 import { connect } from 'react-redux'
 
 
@@ -8,6 +16,23 @@ import { connect } from 'react-redux'
 import ReceiptCard from './ReceiptCard'
 import { getReceipts } from '../utils/actions'
 
+<<<<<<< HEAD
+// }
+
+class ReceiptList extends Component {
+    getReceipts() {
+        // })
+    }
+    render() {
+        return (
+            <ul>
+                {this.getReceipts()}
+            </ul>
+
+        )
+    }
+}
+=======
 
 function ReceiptList({userId}) {
     // NOTE: The value given to setState() must be of the same type as your value is expected to be
@@ -55,6 +80,7 @@ function ReceiptList({userId}) {
       </div>
     );
   }
+>>>>>>> 03de89f53fe7d3f62d87a1a88c66be9d4dfa92aa
 
   const mapStateToProps = state => {
     return {
