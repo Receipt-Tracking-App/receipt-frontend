@@ -11,7 +11,9 @@ function ReceiptList({userId, getReceipts, receipts }) {
     // NOTE: The value given to setState() must be of the same type as your value is expected to be
     const [query, setQuery] = useState("");
     useEffect(() => {
+      if (userId) {
         getReceipts(userId)
+      }
   
     }, [query, userId, getReceipts]);
     const handleInputChange = event => {
