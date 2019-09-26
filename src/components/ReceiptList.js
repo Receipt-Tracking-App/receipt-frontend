@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import { axiosWithAuth } from '../utils/axiosWithAuth.js'
 import { connect } from 'react-redux'
@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 // import AddReceipt from './AddReceipt'
 import ReceiptCard from './ReceiptCard'
 import { getReceipts } from '../utils/actions'
-
+import AddReceipt from './AddReceipt';
 
 function ReceiptList({userId}) {
     // NOTE: The value given to setState() must be of the same type as your value is expected to be
@@ -52,6 +52,9 @@ function ReceiptList({userId}) {
           })}
         </div>
         </form>
+        <div className='add-receipt'>
+          <AddReceipt />
+        </div>
       </div>
     );
   }
@@ -67,4 +70,49 @@ function ReceiptList({userId}) {
   
   export default connect(mapStateToProps, { getReceipts })(ReceiptList)
   
+
   
+
+
+//     function ReceiptList(props) {
+
+//     const [receipts, setReceipts ] = useState({
+//         retailer: 'Exxon',
+//         category: 'Gas'
+//     });
+
+//     useEffect(() => {
+//       axios
+//       .get(`https://lambda-receipt-tracker.herokuapp.com/api/receipts/users`)
+//       .then(response => {
+//         const receiptInfo = response.data;
+//         console.log(receiptInfo);
+//         setReceipts(receiptInfo);
+//       })
+//       .catch(error => {
+//         console.log("The data was not returned", error);
+//       });
+//   }, []);
+    
+
+//     return (
+//         <div>
+//             {receipts.map(receipt => {
+//                 return (
+//                     <div>
+//                         <AddReceipt />
+//                         <ReceiptCard 
+//                             key={receipt.id}
+//                             retailer={receipt.retailer}
+//                             category={receipt.category}
+//                             date={receipt.date}
+//                             amount={receipt.amount}
+//                     /> 
+//                    </div>
+//                 )
+//             })} 
+            
+//         </div>
+//     )
+// }
+
