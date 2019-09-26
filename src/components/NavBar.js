@@ -1,21 +1,6 @@
-import React from 'react'
-import { Collapse, Navbar, NavbarToggler, NavbarBrand,  NavItem, NavLink } from 'reactstrap';
-import styled from 'styled-components';
-
-const NavDiv = styled.div`
-    display: flex;
-    justify-content: space-between;
-    margin: 20px;
-    padding-top: 14px;
-    text-decoration: none;
-    font-size: 2.6rem;
-    font-weight: bold;
-    color: #2C2C2C;
-    border-top: 2px solid #2C2C2C;
-`;
-const Logo = styled.img`
-    margin: 0 auto;
-`;
+import React from 'react';
+import { Link, NavLink} from 'react-router-dom';
+import { Collapse, Nav, Navbar, NavbarToggler, NavbarBrand,  NavItem } from 'reactstrap';
 
 
 export default class NavBar extends React.Component {
@@ -37,22 +22,24 @@ export default class NavBar extends React.Component {
     return (
       <div>
         <Navbar color="faded" light>
-          <NavbarBrand href="/login" className="mr-auto">
-            <img src={ require('../assets/images/receiptlyLogo.svg') } alt=''receiptly logo />
+          <NavbarBrand className="mr-auto">
+            <Link to='/'>
+              <img src={ require('../assets/images/receiptlyLogo.svg') } alt=''receiptly logo />
+            </Link>
           </NavbarBrand>
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse isOpen={!this.state.collapsed} navbar>
-            <NavDiv navbar>
+            <Nav navbar>
               <NavItem>
-                <NavLink href="/login">Login</NavLink>
+                <NavLink to="/login">Login</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/SignUp">Sign Up</NavLink>
+                <NavLink to="/SignUp">Sign Up</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/receiptlist">My Receipts</NavLink>
+                <NavLink to="/receiptlist">My Receipts</NavLink>
               </NavItem>
-              </NavDiv>
+              </Nav>
             </Collapse>
            </Navbar>
          </div>   

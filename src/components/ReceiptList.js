@@ -9,7 +9,7 @@ import ReceiptCard from './ReceiptCard'
 import { getReceipts } from '../utils/actions'
 import AddReceipt from './AddReceipt';
 
-function ReceiptList({userId}) {
+function ReceiptList({userId, getReceipts}) {
     // NOTE: The value given to setState() must be of the same type as your value is expected to be
     const [users, setUsers] = useState([]);
     const [query, setQuery] = useState("");
