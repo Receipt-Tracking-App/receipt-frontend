@@ -47,26 +47,28 @@ function ReceiptList({userId, getReceipts, receipts }) {
             }}
           />
         </SearchForm>
-        <form>
-        <div className="receipt">
-          {receipts.map(receipt => {
-            return (
-              <div className="receipt-list " key={receipt.userId}>
-                <ReceiptCard 
-                        key={receipt.id}
-                        merchant={receipt.merchant}
-                        category={receipt.category}
-                        date={receipt.date}
-                        amount={receipt.amount}
-                    /> 
-              </div>
-            );
-          })}
-        </div>
-        </form>
-        <div className='add-receipt'>
-          <AddReceipt />
-        </div>
+        <DivsBox>
+          <div className='add-receipt'>
+            <AddReceipt />
+          </div>
+          <ReceiptDiv>
+            <Title>My Receipts</Title>
+            {receipts.map(receipt => {
+              return (
+                <div key={receipt.userId}>
+                  <ReceiptCard 
+                    key={receipt.id}
+                    merchant={receipt.merchant}
+                    category={receipt.category}
+                    date={receipt.purchase_date}
+                    amount={receipt.amount}
+                  /> 
+                </div>
+              );
+            })}
+          </ReceiptDiv>
+        </DivsBox>
+        
       </div>
     );
   }
@@ -85,6 +87,25 @@ function ReceiptList({userId, getReceipts, receipts }) {
 
   
 //styled Components
+const DivsBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+`;
+const Title = styled.h2`
+  border-bottom: 2px solid #2C2C2C;
+  padding-bottom: 20px;
+`;
+const ReceiptDiv = styled.div`
+  width: 45%;
+  border: 1px solid grey;
+  background: #FAFAFA;
+  margin: 60px auto;
+  padding: 30px 20px;
+  
+`;
+
 const Input = styled(TextField)`
   width: 40vw;
   background: #FAFAFA;
@@ -96,46 +117,3 @@ const SearchForm = styled.form`
   margin-top: 20px;
   padding-top: 30px;   
 `;
-
-//     function ReceiptList(props) {
-
-//     const [receipts, setReceipts ] = useState({
-//         retailer: 'Exxon',
-//         category: 'Gas'
-//     });
-
-//     useEffect(() => {
-//       axios
-//       .get(`https://lambda-receipt-tracker.herokuapp.com/api/receipts/users`)
-//       .then(response => {
-//         const receiptInfo = response.data;
-//         console.log(receiptInfo);
-//         setReceipts(receiptInfo);
-//       })
-//       .catch(error => {
-//         console.log("The data was not returned", error);
-//       });
-//   }, []);
-    
-
-//     return (
-//         <div>
-//             {receipts.map(receipt => {
-//                 return (
-//                     <div>
-//                         <AddReceipt />
-//                         <ReceiptCard 
-//                             key={receipt.id}
-//                             retailer={receipt.retailer}
-//                             category={receipt.category}
-//                             date={receipt.date}
-//                             amount={receipt.amount}
-//                     /> 
-//                    </div>
-//                 )
-//             })} 
-            
-//         </div>
-//     )
-// }
-
