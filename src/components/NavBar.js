@@ -27,7 +27,7 @@ class NavBar extends React.Component {
       <div>
         <Navbar color="faded" light>
           <NavbarBrand className="mr-auto">
-            <Link to='/login'>
+            <Link to='/'>
               <img src={ require('../assets/images/receiptlyLogo.svg') } alt=''receiptly logo />
             </Link>
           </NavbarBrand>
