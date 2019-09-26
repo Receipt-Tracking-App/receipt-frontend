@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Field, Formik } from 'formik';
 import styled from 'styled-components';
 import { postReceipt } from '../utils/actions'
+import ImageUpload from './ImageUpload';
 
-function AddReceipt({ status, newReceipt }) {
+const initialReceipt = {
+  retailer: '',
+  category: '',
+  date: '',
+  amount: ''
+}
+function AddReceipt({ postReceipt }) {
 
-  const [receipts, setReceipts] = useState([])
-  useEffect(() => {
-    if(status) {
-      setReceipts([...receipts, status])
-    }
-    }, [receipts, status])
+  const [newReceipt, setNewReceipts] = useState(initialReceipt)
 
-  const handleChange = e => {
-    setReceipts(e.target.value)
-    console.log(e.target.value)
-
+  const handleChanges = e => {
+    setNewReceipts({ ...newReceipt, [e.target.name]: e.target.value})
   }
 
   const handleSubmit = event => {
@@ -27,25 +27,44 @@ function AddReceipt({ status, newReceipt }) {
   return (
     <ReceiptContainer>
       <Formik>
-        <Form onSubmit={handleChange}>
+        <Form onSubmit={handleSubmit}>
           <Title>Add Receipt</Title>
           <ImgBox>
             <Cloud src={ require('../assets/images/upload.png') } alt='upload icon' />
-            <StyledBtn type='submit'>Scan Photo</StyledBtn>
+            {/* <StyledBtn type='submit'>Upload Receipt</StyledBtn> */}
+            <ImageUpload />
           </ImgBox>
           
           <h3>Enter Details</h3>
           <DetailsBox>
-            <Field type='text' name='retailer' placeholder='Retailer' />
-            <Field component='select' className='receipt-category' name='category'>
-              <option>Category</option>
-              <option value='work'>Work</option>
-              <option value='food'>Dining</option>
-              <option value='shopping'>Shopping</option>
-              <option value='travel'>Travel</option>
+            <Field 
+              type='text' 
+              name='retailer' 
+              placeholder='Retailer' 
+              onChange={handleChanges}
+            />
+            <Field 
+              component='select' 
+              className='receipt-category' 
+              name='category'  
+              onChange={handleChanges}>
+                <option>Category</option>
+                <option value='work'>Work</option>
+                <option value='food'>Dining</option>
+                <option value='shopping'>Shopping</option>
+                <option value='travel'>Travel</option>
             </Field>
-            <Field type='date' name='date' placeholder='Date' />
-            <Field type='text' name='amount' placeholder='Amount' />
+            <Field 
+              type='date' 
+              name='date' 
+              placeholder='Date' 
+              onChange={handleChanges} 
+              />
+            <Field 
+              type='text' 
+              name='amount' 
+              placeholder='Amount' 
+              onChange={handleChanges} />
           </DetailsBox>
           
           <StyledBtn type='submit'>Add Receipt</StyledBtn>          
@@ -90,7 +109,6 @@ const DetailsBox= styled.div`
   flex-direction: column;
   margin: 10px 0;
   padding: 20px;
-
 `;
 
 const StyledBtn = styled.button`
@@ -110,7 +128,7 @@ const Title = styled.h1`
 const ImgBox = styled.div`
   display: flex;
   flex-direction: column;
-  width: 30vw;
+  width: 40vw;
   margin: 10px auto;
 `;
 const Cloud = styled.img`
@@ -121,5 +139,4 @@ const Cloud = styled.img`
   border-radius: 15px;
   padding: 5px;
   box-shadow: 2px 3px 2px 3px #C0C0C0;
-
 `;

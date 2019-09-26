@@ -1,5 +1,5 @@
 import React from 'react'
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand,  NavItem, NavLink } from 'reactstrap';
 import styled from 'styled-components';
 
 const NavDiv = styled.div`
@@ -16,9 +16,6 @@ const NavDiv = styled.div`
 const Logo = styled.img`
     margin: 0 auto;
 `;
-
-
-
 
 
 export default class NavBar extends React.Component {
@@ -40,7 +37,9 @@ export default class NavBar extends React.Component {
     return (
       <div>
         <Navbar color="faded" light>
-          <NavbarBrand href="/" className="mr-auto">Receiptly</NavbarBrand>
+          <NavbarBrand href="/login" className="mr-auto">
+            <img src={ require('../assets/images/receiptlyLogo.svg') } alt=''receiptly logo />
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse isOpen={!this.state.collapsed} navbar>
             <NavDiv navbar>
@@ -51,7 +50,7 @@ export default class NavBar extends React.Component {
                 <NavLink href="/SignUp">Sign Up</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/receiptlist">List of Receipts</NavLink>
+                <NavLink href="/receiptlist">My Receipts</NavLink>
               </NavItem>
               </NavDiv>
             </Collapse>
@@ -60,6 +59,9 @@ export default class NavBar extends React.Component {
     );
   }
 } 
+
+
+
 //         <Nav>
 //             <NavLink href='/'>Home</NavLink>
 //             <NavLink href='SignUp'>Register</NavLink>
@@ -69,3 +71,17 @@ export default class NavBar extends React.Component {
 //         </Nav>
 //     )
 // }
+// const Nav = styled.div`
+//     display: flex;
+//     justify-content: space-between;
+//     margin: 20px;
+//     padding-top: 14px;
+//     text-decoration: none;
+//     font-size: 2.6rem;
+//     font-weight: bold;
+//     color: #2C2C2C;
+//     border-top: 2px solid #2C2C2C;
+// `;
+// const Logo = styled.img`
+//     margin: 0 auto;
+// `;
