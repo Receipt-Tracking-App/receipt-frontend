@@ -90,7 +90,6 @@ const DetailsBox= styled.div`
   flex-direction: column;
   margin: 10px 0;
   padding: 20px;
-
 `;
 
 const StyledBtn = styled.button`
@@ -121,5 +120,4 @@ const Cloud = styled.img`
   border-radius: 15px;
   padding: 5px;
   box-shadow: 2px 3px 2px 3px #C0C0C0;
-
 `;

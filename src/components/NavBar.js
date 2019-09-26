@@ -1,5 +1,5 @@
 import React from 'react'
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler, NavbarBrand,  NavItem, NavLink } from 'reactstrap';
 import styled from 'styled-components';
 
 const NavDiv = styled.div`
@@ -16,9 +16,6 @@ const NavDiv = styled.div`
 const Logo = styled.img`
     margin: 0 auto;
 `;
-
-
-
 
 
 export default class NavBar extends React.Component {
@@ -60,12 +57,3 @@ export default class NavBar extends React.Component {
     );
   }
 } 
-//         <Nav>
-//             <NavLink href='/'>Home</NavLink>
-//             <NavLink href='SignUp'>Register</NavLink>
-//             <NavLink href='/login'>Login</NavLink>
-//             <NavLink href='#'>Add Receipts</NavLink>
-//             <NavLink href='/receiptlist'>My Receipts</NavLink>
-//         </Nav>
-//     )
-// }
