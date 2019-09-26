@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { postReceipt } from '../utils/actions'
 
 const initialReceipt = {
-  retailer: '',
+  merchant: '',
   category: '',
   date: '',
   amount: ''
@@ -46,7 +46,7 @@ function AddReceipt({ postReceipt }) {
           <DetailsBox>
             <Field 
               type='text' 
-              name='retailer' 
+              name='merchant' 
               placeholder='Retailer' 
               onChange={handleChanges}
             />

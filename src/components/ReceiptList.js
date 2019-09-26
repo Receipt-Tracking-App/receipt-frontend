@@ -54,7 +54,7 @@ function ReceiptList({userId, getReceipts, receipts }) {
               <div className="receipt-list " key={receipt.userId}>
                 <ReceiptCard 
                         key={receipt.id}
-                        retailer={receipt.retailer}
+                        merchant={receipt.merchant}
                         category={receipt.category}
                         date={receipt.date}
                         amount={receipt.amount}
