@@ -6,8 +6,8 @@ import { postReceipt } from '../utils/actions'
 
 const initialReceipt = {
   merchant: '',
-  category: '',
-  date: '',
+  categoryId: '',
+  purchaseDate: '',
   amount: ''
 }
 function AddReceipt({ postReceipt }) {
@@ -38,7 +38,7 @@ function AddReceipt({ postReceipt }) {
             <Cloud src={ require('../assets/images/upload.png') } alt='upload icon' />
             {/* <StyledBtn type='submit'>Upload Receipt</StyledBtn> */}
             <div>
-              <input type='file' name='imageFile' onChange={onFileChange} />
+                <input type='file' name='imageFile' onChange={onFileChange} />
             </div>
           </ImgBox>
           
@@ -53,17 +53,17 @@ function AddReceipt({ postReceipt }) {
             <Field 
               component='select' 
               className='receipt-category' 
-              name='category'  
+              name='categoryId'  
               onChange={handleChanges}>
                 <option>Category</option>
-                <option value='work'>Work</option>
-                <option value='food'>Dining</option>
-                <option value='shopping'>Shopping</option>
-                <option value='travel'>Travel</option>
+                <option value='1'>Work</option>
+                <option value='2'>Dining</option>
+                <option value='3'>Shopping</option>
+                <option value='4'>Travel</option>
             </Field>
             <Field 
               type='date' 
-              name='date' 
+              name='purchaseDate' 
               placeholder='Date' 
               onChange={handleChanges} 
               />
