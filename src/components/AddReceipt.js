@@ -15,7 +15,7 @@ function AddReceipt({ status, newReceipt }) {
 
   const handleChange = e => {
     setReceipts(e.target.value)
-    console.log(setReceipts)
+    console.log(e.target.value)
 
   }
 

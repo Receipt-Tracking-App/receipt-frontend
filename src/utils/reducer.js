@@ -13,7 +13,10 @@ import {
     POSTING_RECEIPT_FAILURE,
     DELETING_RECEIPT_START,
     DELETING_RECEIPT_SUCCESS,
-    DELETING_RECEIPT_FAILURE
+    DELETING_RECEIPT_FAILURE,
+    UPDATING_RECEIPT_START,
+    UPDATING_RECEIPT_SUCCESS,
+    UPDATING_RECEIPT_FAILURE
 } from './actions'
 
 const initialState = {
@@ -117,6 +120,29 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 isFetching: false,
                 error: `Error: Unable to delete receipt: ${action.payload}`
+            }
+        case UPDATING_RECEIPT_START:
+            return {
+                ...state,
+                isFetching: true,
+                error: ''
+            }
+        case UPDATING_RECEIPT_SUCCESS:
+            return {
+                ...state,
+                isFetching: false,
+                receipts: state.receipts.map(receipt => {
+                    if (receipt.receiptId === action.payload.receiptId) {
+                        return action.payload
+                    }
+                    return receipt
+                })
+            }
+        case UPDATING_RECEIPT_FAILURE:
+            return {
+                ...state,
+                isFetching: false,
+                error: `Error: Unable to update receipt: ${action.payload}`
             }
         default:
             return state
