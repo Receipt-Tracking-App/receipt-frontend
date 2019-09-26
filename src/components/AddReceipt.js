@@ -3,17 +3,17 @@ import { connect } from 'react-redux'
 import { Field, Formik } from 'formik';
 import styled from 'styled-components';
 import { postReceipt } from '../utils/actions'
-import ImageUpload from './ImageUpload';
 
 const initialReceipt = {
-  retailer: '',
-  category: '',
-  date: '',
+  merchant: '',
+  categoryId: '',
+  purchaseDate: '',
   amount: ''
 }
 function AddReceipt({ postReceipt }) {
 
   const [newReceipt, setNewReceipts] = useState(initialReceipt)
+  const [imageData, setImageData] = useState(null)
 
   const handleChanges = e => {
     setNewReceipts({ ...newReceipt, [e.target.name]: e.target.value})
@@ -21,8 +21,13 @@ function AddReceipt({ postReceipt }) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    postReceipt(newReceipt)
+    postReceipt(newReceipt, imageData)
   }
+
+  const onFileChange = (e) => {
+    let files = e.target.files;
+    setImageData(files[0])
+}
 
   return (
     <ReceiptContainer>
@@ -32,31 +37,33 @@ function AddReceipt({ postReceipt }) {
           <ImgBox>
             <Cloud src={ require('../assets/images/upload.png') } alt='upload icon' />
             {/* <StyledBtn type='submit'>Upload Receipt</StyledBtn> */}
-            <ImageUpload />
+            <div>
+                <input type='file' name='imageFile' onChange={onFileChange} />
+            </div>
           </ImgBox>
           
           <h3>Enter Details</h3>
           <DetailsBox>
             <Field 
               type='text' 
-              name='retailer' 
+              name='merchant' 
               placeholder='Retailer' 
               onChange={handleChanges}
             />
             <Field 
               component='select' 
               className='receipt-category' 
-              name='category'  
+              name='categoryId'  
               onChange={handleChanges}>
                 <option>Category</option>
-                <option value='work'>Work</option>
-                <option value='food'>Dining</option>
-                <option value='shopping'>Shopping</option>
-                <option value='travel'>Travel</option>
+                <option value='1'>Work</option>
+                <option value='2'>Dining</option>
+                <option value='3'>Shopping</option>
+                <option value='4'>Travel</option>
             </Field>
             <Field 
               type='date' 
-              name='date' 
+              name='purchaseDate' 
               placeholder='Date' 
               onChange={handleChanges} 
               />
