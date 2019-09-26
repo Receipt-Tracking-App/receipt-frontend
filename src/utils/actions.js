@@ -50,7 +50,7 @@ export const getReceipts = (userId) => dispatch => {
         .get(`https://lambda-receipt-tracker.herokuapp.com/api/receipts/users/${userId}`)
         .then(res => {
             console.log(res)
-            dispatch({ type: FETCHING_RECEIPTS_SUCCESS, payload: res.data})
+            dispatch({ type: FETCHING_RECEIPTS_SUCCESS, payload: res.data.receipts.receipts})
         })
         .catch(err => {
             console.log(`unable to load receipts data: ${err}`)
