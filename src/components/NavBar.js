@@ -1,15 +1,8 @@
-<<<<<<< HEAD
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, NavLink} from 'react-router-dom';
 import { Collapse, Nav, Navbar, NavbarToggler, NavbarBrand,  NavItem } from 'reactstrap';
 import styled from 'styled-components';
-=======
-import React from 'react'
-import { connect } from 'react-redux'
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem } from 'reactstrap';
-import { Link, NavLink } from 'react-router-dom'
->>>>>>> 90564bcbaea036c7907dc718ba2dea7b65544812
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -30,7 +23,6 @@ class NavBar extends React.Component {
     const {
       userId
     } = this.props;
-<<<<<<< HEAD
     return (
       <div>
         <Navbar color="faded" light>
@@ -58,44 +50,9 @@ class NavBar extends React.Component {
             </Collapse>
         </Navbar>
       </div>   
-=======
-
-    return (
-      <div>
-       <Navbar color="faded" light expand="md">
-         <NavbarBrand className="mr-auto">
-           <Link to='/'>
-             <img src={ require('../assets/images/receiptlyLogo.svg') } alt='receiptly logo' height="70px"/>
-           </Link>
-         </NavbarBrand>
-         <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-         <Collapse isOpen={!this.state.collapsed} navbar>
-           <Nav navbar>
-             {!userId && <NavItem>
-               <NavLink to="/login" className="nav-link">Login</NavLink>
-             </NavItem>}
-             {!userId && <NavItem>
-               <NavLink to="/SignUp" className="nav-link">Sign Up</NavLink>
-             </NavItem>}
-             {userId && <NavItem>
-               <NavLink to="/receiptlist" className="nav-link">My Receipts</NavLink>
-             </NavItem>}
-             </Nav>
-           </Collapse>
-          </Navbar>
-        </div>
->>>>>>> 90564bcbaea036c7907dc718ba2dea7b65544812
     );
   }
 }
-
-
-const mapStateToProps = state => {
-  return {
-    userId: state.userId,
-  }
-}
-export default connect(mapStateToProps, {})(NavBar)
 
 
 const mapStateToProps = state => {
