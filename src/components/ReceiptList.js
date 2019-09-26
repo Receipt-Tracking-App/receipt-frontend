@@ -3,20 +3,17 @@ import axios from 'axios'
 import { axiosWithAuth } from '../utils/axiosWithAuth.js'
 import { connect } from 'react-redux'
 
-
-// import AddReceipt from './AddReceipt'
 import ReceiptCard from './ReceiptCard'
 import { getReceipts } from '../utils/actions'
 import AddReceipt from './AddReceipt';
 
-function ReceiptList({userId}) {
+function ReceiptList({userId, getReceipts, receipts }) {
     // NOTE: The value given to setState() must be of the same type as your value is expected to be
-    const [users, setUsers] = useState([]);
     const [query, setQuery] = useState("");
     useEffect(() => {
         getReceipts(userId)
   
-    }, [query, userId]);
+    }, [query, userId, getReceipts]);
     const handleInputChange = event => {
       setQuery(event.target.value);
     };
@@ -37,7 +34,7 @@ function ReceiptList({userId}) {
         </form>
         <form>
         <div className="receipt">
-          {users.map(receipt => {
+          {receipts.map(receipt => {
             return (
               <div className="receipt-list " key={receipt.userId}>
                 <ReceiptCard 

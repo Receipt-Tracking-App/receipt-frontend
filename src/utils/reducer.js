@@ -112,7 +112,7 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 isFetching: false,
                 receipts: state.receipts.filter(receipt => {
-                    return receipt.id !== action.payload
+                    return receipt.receiptId !== action.payload
                 })
             }
         case DELETING_RECEIPT_FAILURE:
