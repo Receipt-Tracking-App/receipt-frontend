@@ -2,12 +2,25 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import { axiosWithAuth } from '../utils/axiosWithAuth.js'
 import { connect } from 'react-redux'
-
-
-// import AddReceipt from './AddReceipt'
+import { InputAdornment, TextField } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search'
 import ReceiptCard from './ReceiptCard'
 import { getReceipts } from '../utils/actions'
 import AddReceipt from './AddReceipt';
+import styled from 'styled-components';
+
+const Input = styled(TextField)`
+  width: 40vw;
+  background: #FAFAFA;
+  margin-bottom: 20px;
+  justify-self: right;
+  float: right;
+`;
+const SearchForm = styled.form`
+  border-top: 2px solid #2C2C2C;
+  margin-top: 20px;
+  padding-top: 30px;   
+`;
 
 function ReceiptList({userId, getReceipts}) {
     // NOTE: The value given to setState() must be of the same type as your value is expected to be
@@ -23,8 +36,8 @@ function ReceiptList({userId, getReceipts}) {
   
     return (
       <div className="search-box">
-        <form className="search">
-          <input
+        <SearchForm>
+          <Input
             type="text"
             onChange={handleInputChange}
             value={query}
@@ -33,8 +46,15 @@ function ReceiptList({userId, getReceipts}) {
             className="prompt search-name"
             placeholder="search by name"
             autoComplete="off"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position='start'>
+                  <SearchIcon />
+                </InputAdornment>
+              )
+            }}
           />
-        </form>
+        </SearchForm>
         <form>
         <div className="receipt">
           {users.map(receipt => {

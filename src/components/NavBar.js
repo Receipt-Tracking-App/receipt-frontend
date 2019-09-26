@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, NavLink} from 'react-router-dom';
 import { Collapse, Nav, Navbar, NavbarToggler, NavbarBrand,  NavItem } from 'reactstrap';
-
+import styled from 'styled-components';
 
 export default class NavBar extends React.Component {
   constructor(props) {
@@ -29,17 +29,17 @@ export default class NavBar extends React.Component {
           </NavbarBrand>
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse isOpen={!this.state.collapsed} navbar>
-            <Nav navbar>
-              <NavItem>
-                <NavLink to="/login">Login</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="/SignUp">Sign Up</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="/receiptlist">My Receipts</NavLink>
-              </NavItem>
-              </Nav>
+            <StyledNav navbar>
+              <StyledNavItem>
+                <StyledNavLink to="/login">Login</StyledNavLink>
+              </StyledNavItem>
+              <StyledNavItem>
+                <StyledNavLink to="/SignUp">Sign Up</StyledNavLink>
+              </StyledNavItem>
+              <StyledNavItem>
+                <StyledNavLink to="/receiptlist">My Receipts</StyledNavLink>
+              </StyledNavItem>
+              </StyledNav>
             </Collapse>
            </Navbar>
          </div>   
@@ -47,28 +47,20 @@ export default class NavBar extends React.Component {
   }
 } 
 
+const StyledNav = styled(Nav)`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  background: #5F336C;
+  padding: 10px;
+`;
+const StyledNavItem = styled(NavItem)`
+  width: 14vw;
+`;
+const StyledNavLink = styled(NavLink)`
+  font-size: 1.6rem;
+  text-decoration: none;
+  color: #FAFAFA;
+  font-weight: bold;
+`;
 
-
-//         <Nav>
-//             <NavLink href='/'>Home</NavLink>
-//             <NavLink href='SignUp'>Register</NavLink>
-//             <NavLink href='/login'>Login</NavLink>
-//             <NavLink href='#'>Add Receipts</NavLink>
-//             <NavLink href='/receiptlist'>My Receipts</NavLink>
-//         </Nav>
-//     )
-// }
-// const Nav = styled.div`
-//     display: flex;
-//     justify-content: space-between;
-//     margin: 20px;
-//     padding-top: 14px;
-//     text-decoration: none;
-//     font-size: 2.6rem;
-//     font-weight: bold;
-//     color: #2C2C2C;
-//     border-top: 2px solid #2C2C2C;
-// `;
-// const Logo = styled.img`
-//     margin: 0 auto;
-// `;
