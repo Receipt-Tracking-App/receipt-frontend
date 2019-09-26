@@ -33,9 +33,8 @@ function SignUp({ postUser, history }) {
 
     return (
         <SignUpDiv>
-            <br/>
-            <br/>
-            <form onSubmit={callSignUp}>
+            <Title>Create an Account</Title>
+            <Form onSubmit={callSignUp}>
                 <input
                     type="text"
                     name="firstName"
@@ -78,8 +77,8 @@ function SignUp({ postUser, history }) {
                     placeholder='confirm password'
                     onChange={handleChange}
                 />
-                <button>Sign Up</button>
-            </form>
+                <StyledBtn>Sign Up</StyledBtn>
+            </Form>
         </SignUpDiv>
     )
 }
@@ -96,6 +95,38 @@ const mapStateToProps = state => {
 //styled components
 
 const SignUpDiv = styled.div`
-  width: 200px
-  margin: 20px auto
+  background: #fff;
+  width: 60vw;
+  border: 1px solid #fff;
+  border-radius: 15px;
+  box-shadow: 2px 4px 3px 3px #C0C0C0;
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto;
+  padding: 20px;
 `
+const Form = styled.form`
+  background: #fff;
+  border: 1px solid #fff;
+  border-radius: 15px;
+  box-shadow: 2px 4px 3px 3px #C0C0C0;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  padding: 20px;
+`;
+
+const StyledBtn = styled.button`
+  background: black; 
+  border-radius: 15px;
+  color: #FAFAFA;
+  padding: 5px;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 10px;
+`;
+const Title = styled.h1`
+  border-bottom: 2px solid #5F336C;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+`; 
