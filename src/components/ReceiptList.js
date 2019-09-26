@@ -2,37 +2,29 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import { axiosWithAuth } from '../utils/axiosWithAuth.js'
 import { connect } from 'react-redux'
-import { InputAdornment, TextField } from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search'
+
 import ReceiptCard from './ReceiptCard'
 import { getReceipts } from '../utils/actions'
 import AddReceipt from './AddReceipt';
+
 import styled from 'styled-components';
+import { InputAdornment, TextField } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search'
 
-const Input = styled(TextField)`
-  width: 40vw;
-  background: #FAFAFA;
-  margin-bottom: 20px;
-  justify-self: right;
-  float: right;
-`;
-const SearchForm = styled.form`
-  border-top: 2px solid #2C2C2C;
-  margin-top: 20px;
-  padding-top: 30px;   
-`;
 
-function ReceiptList({userId, getReceipts}) {
-    // NOTE: The value given to setState() must be of the same type as your value is expected to be
-    const [users, setUsers] = useState([]);
-    const [query, setQuery] = useState("");
-    useEffect(() => {
-        getReceipts(userId)
-  
-    }, [query, userId]);
-    const handleInputChange = event => {
-      setQuery(event.target.value);
-    };
+
+function ReceiptList({userId, getReceipts, receipts }) {
+  // NOTE: The value given to setState() must be of the same type as your value is expected to be
+  const [query, setQuery] = useState("");
+  useEffect(() => {
+    if (userId) {
+      getReceipts(userId)
+    }
+
+  }, [query, userId, getReceipts]);
+  const handleInputChange = event => {
+    setQuery(event.target.value);
+  };
   
     return (
       <div className="search-box">
@@ -57,7 +49,7 @@ function ReceiptList({userId, getReceipts}) {
         </SearchForm>
         <form>
         <div className="receipt">
-          {users.map(receipt => {
+          {receipts.map(receipt => {
             return (
               <div className="receipt-list " key={receipt.userId}>
                 <ReceiptCard 
@@ -92,7 +84,18 @@ function ReceiptList({userId, getReceipts}) {
   
 
   
-
+//styled Components
+const Input = styled(TextField)`
+  width: 40vw;
+  background: #FAFAFA;
+  margin-bottom: 20px;
+  float: right;
+`;
+const SearchForm = styled.form`
+  border-top: 2px solid #2C2C2C;
+  margin-top: 20px;
+  padding-top: 30px;   
+`;
 
 //     function ReceiptList(props) {
 

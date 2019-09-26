@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { Field, Formik } from 'formik';
 import styled from 'styled-components';
 import { postReceipt } from '../utils/actions'
-import ImageUpload from './ImageUpload';
 
 const initialReceipt = {
   retailer: '',
@@ -14,6 +13,7 @@ const initialReceipt = {
 function AddReceipt({ postReceipt }) {
 
   const [newReceipt, setNewReceipts] = useState(initialReceipt)
+  const [imageData, setImageData] = useState(null)
 
   const handleChanges = e => {
     setNewReceipts({ ...newReceipt, [e.target.name]: e.target.value})
@@ -21,8 +21,13 @@ function AddReceipt({ postReceipt }) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    postReceipt(newReceipt)
+    postReceipt(newReceipt, imageData)
   }
+
+  const onFileChange = (e) => {
+    let files = e.target.files;
+    setImageData(files[0])
+}
 
   return (
     <ReceiptContainer>
@@ -32,7 +37,9 @@ function AddReceipt({ postReceipt }) {
           <ImgBox>
             <Cloud src={ require('../assets/images/upload.png') } alt='upload icon' />
             {/* <StyledBtn type='submit'>Upload Receipt</StyledBtn> */}
-            <ImageUpload />
+            <div>
+              <input type='file' name='imageFile' onChange={onFileChange} />
+            </div>
           </ImgBox>
           
           <h3>Enter Details</h3>

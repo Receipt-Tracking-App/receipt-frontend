@@ -50,7 +50,7 @@ export const getReceipts = (userId) => dispatch => {
         .get(`https://lambda-receipt-tracker.herokuapp.com/api/receipts/users/${userId}`)
         .then(res => {
             console.log(res)
-            dispatch({ type: FETCHING_RECEIPTS_SUCCESS, payload: res.data})
+            dispatch({ type: FETCHING_RECEIPTS_SUCCESS, payload: res.data.receipts.receipts})
         })
         .catch(err => {
             console.log(`unable to load receipts data: ${err}`)
@@ -62,13 +62,38 @@ export const getReceipts = (userId) => dispatch => {
 export const POSTING_RECEIPT_START = 'POSTING_RECEIPT_START'
 export const POSTING_RECEIPT_SUCCESS = 'POSTING_RECEIPT_SUCCESS'
 export const POSTING_RECEIPT_FAILURE = 'POSTING_RECEIPT_FAILURE'
-export const postReceipt = (newReceipt) => dispatch => {
+export const POSTING_RECEIPT_IMAGE_START = 'POSTING_RECEIPT_IMAGE_START'
+export const POSTING_RECEIPT_IMAGE_SUCCESS = 'POSTING_RECEIPT_IMAGE_SUCCESS'
+export const POSTING_RECEIPT_IMAGE_FAILURE = 'POSTING_RECEIPT_IMAGE_FAILURE'
+export const postReceipt = (newReceipt, image) => dispatch => {
+    console.log('newReceipt:', newReceipt)
     dispatch({ type: POSTING_RECEIPT_START})
     axiosWithAuth()
         .post('https://lambda-receipt-tracker.herokuapp.com/api/receipts', newReceipt)
         .then(res => {
-            console.log(res)
+            console.log('post receipt response:', res)
+            const currentReceiptId = res.data.receiptId
             dispatch({ type: POSTING_RECEIPT_SUCCESS, payload: newReceipt})
+            
+            if (image) {
+                dispatch({ type: POSTING_RECEIPT_IMAGE_START})
+                const formData = new FormData();
+                formData.append('receipt', image)
+                const config = {
+                    headers: {
+                        'content-type': 'multipart/form-data'
+                    }
+                }
+                axiosWithAuth()
+                    .post(`https://lambda-receipt-tracker.herokuapp.com/api/receipts/${currentReceiptId}/upload`, formData, config)
+                    .then(res => {
+                        console.log('post receipt image response:', res)
+                        dispatch({ type: POSTING_RECEIPT_IMAGE_SUCCESS, payload: { currentReceiptId: currentReceiptId, url: res.data.url}})
+                    })
+                    .catch(err => {
+                        console.log(`unable to post receipt image: ${err}`)
+                    })
+            }
         })
         .catch(err => {
             console.log(`unable to post receipts data: ${err}`)
