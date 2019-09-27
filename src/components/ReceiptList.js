@@ -1,22 +1,24 @@
 import React, {useState, useEffect} from 'react'
+import axios from 'axios'
 import { axiosWithAuth } from '../utils/axiosWithAuth.js'
 import { connect } from 'react-redux'
-import index from '../index.css'
 
 import ReceiptCard from './ReceiptCard'
 import { getReceipts } from '../utils/actions'
 import AddReceipt from './AddReceipt';
 
 function ReceiptList({userId, getReceipts, receipts }) {
+    // NOTE: The value given to setState() must be of the same type as your value is expected to be
+    const [query, setQuery] = useState("");
+    useEffect(() => {
+      if (userId) {
+        getReceipts(userId)
+      }
   
-  const [query, setQuery] = useState("");
-  useEffect(() => {
-      getReceipts(userId)
-
-  }, [query, userId, getReceipts]);
-  const handleInputChange = event => {
-    setQuery(event.target.value);
-  };
+    }, [query, userId, getReceipts]);
+    const handleInputChange = event => {
+      setQuery(event.target.value);
+    };
   
     return (
       <div className="receipts">
@@ -40,9 +42,8 @@ function ReceiptList({userId, getReceipts, receipts }) {
                                 <div className="receipt-list " key={receipt.userId}>
                                     <ReceiptCard 
                                         key={receipt.id}
+                                        merchant={receipt.merchant}
                                         purchase_date={receipt.purchase_date}
-                                        category={receipt.category}
-                                        date={receipt.date}
                                         amount={receipt.amount}
                                     /> 
                                   </div>
