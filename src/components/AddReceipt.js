@@ -94,12 +94,12 @@ const mapStateToProps = state => {
   export default connect(mapStateToProps, { postReceipt })(AddReceipt)
 
 
-  const ReceiptContainer = styled.div`
-  width: 60vw;
+const ReceiptContainer = styled.div`
+  width: 45vw;
   border: 1px solid grey;
   background: #FAFAFA;
-  margin: 0 auto;
-  padding: 30px;
+  margin: 60px auto;
+  padding: 30px 20px;
   
 `;
 const Form = styled.form`
@@ -135,12 +135,12 @@ const Title = styled.h1`
 const ImgBox = styled.div`
   display: flex;
   flex-direction: column;
-  width: 40vw;
+  width: 50%;
   margin: 10px auto;
 `;
 const Cloud = styled.img`
-  width: 60%;
-  height: 50%;
+  width: 100%;
+  height: 80%;
   margin: 0 auto;
   border: 1px solid #FAFAFA;
   border-radius: 15px;
