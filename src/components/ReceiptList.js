@@ -68,7 +68,6 @@ function ReceiptList({userId, getReceipts, receipts }) {
             })}
           </ReceiptDiv>
         </DivsBox>
-        
       </div>
     );
   }
@@ -105,7 +104,6 @@ const ReceiptDiv = styled.div`
   padding: 30px 20px;
   
 `;
-
 const Input = styled(TextField)`
   width: 40vw;
   background: #FAFAFA;

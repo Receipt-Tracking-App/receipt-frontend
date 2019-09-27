@@ -12,3 +12,27 @@ code {
     monospace;
 }
 
+
+.receipt {
+  height: 500px;
+}
+
+.receipts {
+  display: flex;
+}
+
+.search {
+  width: 500px;
+  height: 100px;
+  margin: 20px;
+  text-align: center;
+}
+
+.search-box {
+  width: 700px;
+}
+
+.sc-iwsKbI clePjd {
+  width: 650px;
+}
+

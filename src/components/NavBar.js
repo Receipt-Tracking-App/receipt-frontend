@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, NavLink} from 'react-router-dom';
@@ -23,6 +24,7 @@ class NavBar extends React.Component {
     const {
       userId
     } = this.props;
+
     return (
       <div>
         <Navbar color="faded" light>
@@ -63,7 +65,6 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {})(NavBar)
 
-
 //styled components
 const StyledNav = styled(Nav)`
   display: flex;
@@ -81,4 +82,3 @@ const StyledNavLink = styled(NavLink)`
   color: #FAFAFA;
   font-weight: bold;
 `;
-
