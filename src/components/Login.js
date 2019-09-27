@@ -27,6 +27,8 @@ function Login({ userLogin, history }) {
     }
 
     return (
+      <Div>
+        <Img src={ require('../assets/images/undraw_product_teardown_elol.svg') } alt=''receiptly logo />
         <LoginDiv>
             <Form onSubmit={callLogin}>
                 <input
@@ -46,6 +48,8 @@ function Login({ userLogin, history }) {
                 <StyledBtn>Log in</StyledBtn>
             </Form>
         </LoginDiv>
+      </Div>
+
     )
 }
 
@@ -59,11 +63,17 @@ const mapStateToProps = state => {
   export default connect(mapStateToProps, { userLogin })(Login)
 
 //styled components
+const Div = styled.div`
+  display: flex; 
+  margin: 30px 0;
+  border-top: 2px solid #2C2C2C;
+  padding-top: 50px;
+`;
 
 const LoginDiv = styled.div`
   margin: 20px auto;
   background: #fff;
-  width: 60vw;
+  width: 50vw;
   border: 1px solid #fff;
   border-radius: 15px;
   box-shadow: 2px 4px 3px 3px #C0C0C0;
@@ -93,8 +103,11 @@ const StyledBtn = styled.button`
   font-weight: bold;
   margin-top: 10px;
 `;
-const Title = styled.h1`
-  border-bottom: 2px solid #5F336C;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-`; 
+
+const Img = styled.img`
+  width: 400px;
+  height: 400px;
+  background: #FAFAFA;
+  box-shadow: 2px 4px 3px #0C0C0C;
+  margin-left: 20px;
+`;

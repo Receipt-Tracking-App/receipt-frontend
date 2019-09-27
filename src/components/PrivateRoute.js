@@ -22,4 +22,5 @@ const mapStateToProps = state => {
     userId: state.userId,
   }
 }
+
 export default connect(mapStateToProps, {})(PrivateRoute)
